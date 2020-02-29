@@ -8,9 +8,12 @@
         </div>
     </header>
     <div id="sliderA" class="slider">
-        @foreach($data as $v)
-            <img src="{{env('UPLOAD_URL')}}{{$v->goods_img}}">
+        @if(is_array($aa))
+
+            @foreach($aa as $vv)
+                <img src="{{env('UPLOAD_URL')}}{{$vv}}"width="30px;">
             @endforeach
+        @endif
     </div><!--sliderA/-->
     <table class="jia-len">
         <tr>
@@ -53,7 +56,7 @@
     </div><!--zhaieq/-->
     <div class="proinfoList">
         @foreach($data as $v1)
-        <img src="{{env('UPLOAD_URL')}}{{$v1->goods_img}}" width="636" height="822" />
+        <img src="{{env('UPLOAD_URL')}}{{$v1->goods_imgs}}" width="636" height="822" />
             @endforeach
     </div><!--proinfoList/-->
     <div class="proinfoList">
@@ -74,9 +77,12 @@
     </table>
 </div><!--maincont-->
 @endsection
-<script src="/static/js/jquery.min.js"></script>
+<script src="/static/index/js/jquery.min.js"></script>
+<script src="/static/index/js/jquery.spinner.js"></script>
 <script type="text/javascript">
+
     $(function(){
+
         $.ajaxSetup({headers:{ 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
         $(document).on('click','.bb',function(){
             var goods_id = $(this).attr('goods_id');

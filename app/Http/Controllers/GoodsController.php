@@ -17,6 +17,7 @@ class GoodsController extends Controller
      */
     public function index()
     {
+        echo "123";
         //全局辅助函数的session的第一种方法
 //        session(['name'=>'wenli']);
 //        request()->session()->save();
@@ -29,11 +30,11 @@ class GoodsController extends Controller
 
         //$data = CateInfo($ww);
 
-        foreach($data as $v){
-            if($v->goods_imgs){
-                $v->goods_imgs = explode('|',$v->goods_imgs);
-            }
-        }
+//        foreach($data as $v){
+//            if($v->goods_imgs){
+//                $v->goods_imgs = explode('|',$v->goods_imgs);
+//            }
+//        }
 
         return view('goods/index',['data'=>$data]);
     }
@@ -65,18 +66,18 @@ class GoodsController extends Controller
             $res['goods_img'] = upload('goods_img');
         }
 
+
             //多条件上传
             if(isset($res['goods_imgs'])) {
                 $res['goods_imgs'] = up_do('goods_imgs');
                 $res['goods_imgs'] = implode('|', $res['goods_imgs']);
-                $data = Goods::create($res);
-                    //dd($data);
-                    if($data){
-                        return redirect('goods/index');
-                    }
+
             }
-
-
+        $data = Goods::create($res);
+        //dd($data);
+        if($data){
+            return redirect('goods/index');
+        }
 
                //dd($res['goods_imgs']);
 

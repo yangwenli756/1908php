@@ -10,8 +10,8 @@ use App\Brand;
 class IndexController extends Controller
 {
     public function index(){
+        echo 123;
         $res = cache('goods');
-
 
         if(!$res){
 

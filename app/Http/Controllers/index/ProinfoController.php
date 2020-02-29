@@ -24,18 +24,18 @@ class ProinfoController extends Controller
 
 
             $data = Goods::where('goods_id',$id)->get();
+             //dd($data);
+            foreach($data as $v){
+                if($v->goods_img){
+                    $v->goods_img = explode('|',$v->goods_img);
+                }
+            }
 
-            //Redis::set('num',$id);
-
-//            echo Redis::get('num');
 
         }
 
 
-
-
-
         //dd($data);
-        return view('index/proinfo',['data'=>$data,'count'=>$count]);
+        return view('index/proinfo',['data'=>$data,'count'=>$count,'aa'=>$v->goods_img]);
     }
 }

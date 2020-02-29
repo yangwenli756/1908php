@@ -14,7 +14,8 @@ class CarController extends Controller
     public function car(){
         if(session('admin.u_id')){
 
-            $res = Cart::leftjoin('shop_goods','shop_cart.goods_id','=','shop_goods.goods_id')->get();
+
+            $res = Cart::leftjoin('shop_goods','shop_cart.goods_id','=','shop_goods.goods_id')->where(['cart_del'=>1])->get();
 
         }else{
             $res = $this->getCookie();
@@ -22,6 +23,62 @@ class CarController extends Controller
         return view('index/car',['res'=>$res]);
     }
 
+    function changemoney(){
+        $goods_id = request()->goods_id;
+         //dd($goods_id);
+        $money = $this->changemoneyDb($goods_id);
+
+        echo $money;
+    }
+    function changemoneyDb($goods_id){
+        $user_id = session('admin.u_id');
+        $where = [
+            ['u_id','=',$user_id],
+            ['shop_goods.goods_id','in',$goods_id],
+            ['cart_del','=',1]
+        ];
+
+        //dd($where);
+        $res = Cart::leftjoin('shop_goods','shop_goods.goods_id','=','shop_cart.goods_id')->where('shop_goods.goods_id',$goods_id)->get();
+         //dd($res);
+        $money = 0;
+
+        foreach ($res as $k => $v) {
+            $money+=$v['goods_price']*$v['buy_number'];
+        }
+       // dd($money);
+        return $money;
+    }
+    //删除
+    function cartDel(){
+
+        $goods_id = request()->goods_id;
+
+        //dd($goods_id);
+        $res =  $this->cartDelDb($goods_id);
+
+         //dd($res);
+        if($res){
+            json_encode(['code'=>1,'font'=>'删除成功']);
+        }else{
+            json_encode(['code'=>0,'font'=>'删除失败']);
+        }
+    }
+
+    function cartDelDb($goods_id){
+        $user_id = session('admin.u_id');
+        $where = [
+            ['goods_id','in',$goods_id],
+            ['u_id','=',$user_id],
+            ['cart_del','=',1]
+        ];
+
+       //dd($where);
+        $res = Cart::where('goods_id',$goods_id)->update(['cart_del'=>2]);
+
+         //dd($res);
+        return $res;
+    }
     //判断登录之前和之后的加入购物车
     public function addcar(){
        $id = request()->goods_id;

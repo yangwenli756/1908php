@@ -99,6 +99,8 @@ Route::get('/ajaxsend', 'index\RegisterController@ajaxsend');
 Route::post('/register_do', 'index\RegisterController@register_do');
 Route::get('/prolist/{id}', 'index\ProlistController@prolist');
 Route::get('/setcookie', 'index\LoginController@setcookie');
+Route::post('/changemoney', 'index\CarController@changemoney');
+Route::post('/cartdel', 'index\CarController@cartdel');
 Route::get('/proinfo/{id}', 'index\ProinfoController@proinfo');
 
 

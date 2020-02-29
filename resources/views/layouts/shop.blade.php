@@ -66,9 +66,11 @@
 <script src="/static/index/js/style.js"></script>
 <!--焦点轮换-->
 <script src="/static/index/js/jquery.excoloSlider.js"></script>
+<script src="/static/index/js/jquery.spinner.js"></script>
 <script>
     $(function () {
         $("#sliderA").excoloSlider();
+        $('.spinnerExample').spinner({});
     });
 </script>
 </body>
