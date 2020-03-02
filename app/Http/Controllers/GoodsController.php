@@ -17,7 +17,7 @@ class GoodsController extends Controller
      */
     public function index()
     {
-        echo "123";
+        echo "你好";
         //全局辅助函数的session的第一种方法
 //        session(['name'=>'wenli']);
 //        request()->session()->save();

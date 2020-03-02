@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Goods;
 use App\Brand;
+use Illuminate\Support\Facades\Cache ;
 
 class IndexController extends Controller
 {
     public function index(){
-        echo 123;
+
+        Cache::flush();
         $res = cache('goods');
 
         if(!$res){

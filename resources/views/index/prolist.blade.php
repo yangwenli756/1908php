@@ -13,113 +13,23 @@
         <li><a href="javascript:;">价格</a></li>
     </ul><!--pro-select/-->
     <div class="prolist">
+        @foreach($res as $v)
         <dl>
-            <dt><a href="proinfo.html"><img src="/static/index/images/prolist1.jpg" width="100" height="100" /></a></dt>
+            <dt><a href="{{url('proinfo')}}">
+                    @if(is_array($aa))
+
+                        @foreach($aa as $vv)
+                            <img src="{{env('UPLOAD_URL')}}{{$vv}}"width="100px;" >
+                        @endforeach
+                    @endif
+                </a></dt>
             <dd>
-                <h3><a href="proinfo.html">四叶草</a></h3>
+                <h3><a href="proinfo.html">{{$v->bname}}</a></h3>
                 <div class="prolist-price"><strong>¥299</strong> <span>¥599</span></div>
                 <div class="prolist-yishou"><span>5.0折</span> <em>已售：35</em></div>
             </dd>
             <div class="clearfix"></div>
         </dl>
-        <dl>
-            <dt><a href="proinfo.html"><img src="/static/index/images/prolist1.jpg" width="100" height="100" /></a></dt>
-            <dd>
-                <h3><a href="proinfo.html">四叶草</a></h3>
-                <div class="prolist-price"><strong>¥299</strong> <span>¥599</span></div>
-                <div class="prolist-yishou"><span>5.0折</span> <em>已售：35</em></div>
-            </dd>
-            <div class="clearfix"></div>
-        </dl>
-        <dl>
-            <dt><a href="proinfo.html"><img src="/static/index/images/prolist1.jpg" width="100" height="100" /></a></dt>
-            <dd>
-                <h3><a href="proinfo.html">四叶草</a></h3>
-                <div class="prolist-price"><strong>¥299</strong> <span>¥599</span></div>
-                <div class="prolist-yishou"><span>5.0折</span> <em>已售：35</em></div>
-            </dd>
-            <div class="clearfix"></div>
-        </dl>
-        <dl>
-            <dt><a href="proinfo.html"><img src="/static/index/images/prolist1.jpg" width="100" height="100" /></a></dt>
-            <dd>
-                <h3><a href="proinfo.html">四叶草</a></h3>
-                <div class="prolist-price"><strong>¥299</strong> <span>¥599</span></div>
-                <div class="prolist-yishou"><span>5.0折</span> <em>已售：35</em></div>
-            </dd>
-            <div class="clearfix"></div>
-        </dl>
-        <dl>
-            <dt><a href="proinfo.html"><img src="/static/index/images/prolist1.jpg" width="100" height="100" /></a></dt>
-            <dd>
-                <h3><a href="proinfo.html">四叶草</a></h3>
-                <div class="prolist-price"><strong>¥299</strong> <span>¥599</span></div>
-                <div class="prolist-yishou"><span>5.0折</span> <em>已售：35</em></div>
-            </dd>
-            <div class="clearfix"></div>
-        </dl>
-        <dl>
-            <dt><a href="proinfo.html"><img src="/static/index/images/prolist1.jpg" width="100" height="100" /></a></dt>
-            <dd>
-                <h3><a href="proinfo.html">四叶草</a></h3>
-                <div class="prolist-price"><strong>¥299</strong> <span>¥599</span></div>
-                <div class="prolist-yishou"><span>5.0折</span> <em>已售：35</em></div>
-            </dd>
-            <div class="clearfix"></div>
-        </dl>
-        <dl>
-            <dt><a href="proinfo.html"><img src="/static/index/images/prolist1.jpg" width="100" height="100" /></a></dt>
-            <dd>
-                <h3><a href="proinfo.html">四叶草</a></h3>
-                <div class="prolist-price"><strong>¥299</strong> <span>¥599</span></div>
-                <div class="prolist-yishou"><span>5.0折</span> <em>已售：35</em></div>
-            </dd>
-            <div class="clearfix"></div>
-        </dl>
-        <dl>
-            <dt><a href="proinfo.html"><img src="/static/index/images/prolist1.jpg" width="100" height="100" /></a></dt>
-            <dd>
-                <h3><a href="proinfo.html">四叶草</a></h3>
-                <div class="prolist-price"><strong>¥299</strong> <span>¥599</span></div>
-                <div class="prolist-yishou"><span>5.0折</span> <em>已售：35</em></div>
-            </dd>
-            <div class="clearfix"></div>
-        </dl>
-        <dl>
-            <dt><a href="proinfo.html"><img src="/static/index/images/prolist1.jpg" width="100" height="100" /></a></dt>
-            <dd>
-                <h3><a href="proinfo.html">四叶草</a></h3>
-                <div class="prolist-price"><strong>¥299</strong> <span>¥599</span></div>
-                <div class="prolist-yishou"><span>5.0折</span> <em>已售：35</em></div>
-            </dd>
-            <div class="clearfix"></div>
-        </dl>
-        <dl>
-            <dt><a href="proinfo.html"><img src="/static/index/images/prolist1.jpg" width="100" height="100" /></a></dt>
-            <dd>
-                <h3><a href="proinfo.html">四叶草</a></h3>
-                <div class="prolist-price"><strong>¥299</strong> <span>¥599</span></div>
-                <div class="prolist-yishou"><span>5.0折</span> <em>已售：35</em></div>
-            </dd>
-            <div class="clearfix"></div>
-        </dl>
-        <dl>
-            <dt><a href="proinfo.html"><img src="/static/index/images/prolist1.jpg" width="100" height="100" /></a></dt>
-            <dd>
-                <h3><a href="proinfo.html">四叶草</a></h3>
-                <div class="prolist-price"><strong>¥299</strong> <span>¥599</span></div>
-                <div class="prolist-yishou"><span>5.0折</span> <em>已售：35</em></div>
-            </dd>
-            <div class="clearfix"></div>
-        </dl>
-        <dl>
-            <dt><a href="proinfo.html"><img src="/static/index/images/prolist1.jpg" width="100" height="100" /></a></dt>
-            <dd>
-                <h3><a href="proinfo.html">四叶草</a></h3>
-                <div class="prolist-price"><strong>¥299</strong> <span>¥599</span></div>
-                <div class="prolist-yishou"><span>5.0折</span> <em>已售：35</em></div>
-            </dd>
-            <div class="clearfix"></div>
-        </dl>
+            @endforeach
     </div><!--prolist/-->
     @endsection

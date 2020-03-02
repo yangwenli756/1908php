@@ -9,6 +9,8 @@ use App\Goods;
 
 use App\Cart;
 
+use DB;
+
 class CarController extends Controller
 {
     public function car(){
@@ -192,6 +194,77 @@ class CarController extends Controller
         }
 
 
+    }
+
+    //解析下订单页面
+    public function  pay(){
+
+        $goods_id = request() ->goods_id;
+
+        //dd($shoping_id);
+        $res = Goods::leftjoin('shop_cart','shop_goods.goods_id','=','shop_cart.goods_id')->where('shop_goods.goods_id',$goods_id)->get();
+        //dd($res);
+        return view('index/pay',['res'=>$res]);
+    }
+
+    //解析地址页面
+    public function address(){
+        $provinceinfo = $this->getAreaInfo(0);
+        return view('index/address',['province'=>$provinceinfo]);
+    }
+    //添加地址
+    public function address_do(Request $request){
+       $data = $request->except('_token');
+
+        $res = DB::table('address')->insert($data);
+
+        if($res){
+            return redirect('pay');
+        }
+    }
+    //收货地址的展示
+    function address_list(){
+
+        $addressinfo = $this->getaddress();
+        return view('index/address_list',['addressinfo'=>$addressinfo]);
+    }
+
+    //查询表得到市城区的详细名字
+    public function getaddress(){
+
+        $addressinfo = DB::table('address')->get();
+
+        foreach($addressinfo as $k=>$v){
+            $addressinfo[$k]->province = DB::table('shop_area')->where('id',$v->province)->value('name');
+            $addressinfo[$k]->city= DB::table('shop_area')->where('id',$v->city)->value('name');
+            $addressinfo[$k]->area= DB::table('shop_area')->where('id',$v->area)->value('name');
+        }
+
+        return $addressinfo;
+    }
+
+    //市城区的展示
+    function getArea(){
+        $id = request()->id;
+        //dd($id);
+        $info = $this->getAreaInfo($id);
+        //dd($info);
+        echo json_encode($info);
+
+    }
+    function getAreaInfo($pid){
+
+
+        $where = [
+            ['pid','=',$pid]
+        ];
+         $res =  DB::table('shop_area')->where($where)->get();
+
+        return $res;
+    }
+    //提交订单
+    public function success(){
+        return view('index/success');
     }
 
 

@@ -80,7 +80,7 @@
             <tr>
                 <th width="10%"><a href="javascript:history.back(-1)"><span class="glyphicon glyphicon-menu-left"></span></a></th>
                 <td width="50%">总计：<strong class="orange" id="money">¥0</strong></td>
-                <td width="40%"><a href="pay.html" class="jiesuan">去结算</a></td>
+                <td width="40%"><a href="javascript:;" class="jiesuan" id="is_money">去结算</a></td>
             </tr>
         </table>
     </div><!--gwcpiao/-->
@@ -227,6 +227,26 @@
             });
 
             getmoney(_this)
+        });
+        //点击结算
+        $(document).on('click','#is_money',function(){
+            var check = $('.check:checked');
+            if(check.length<1){
+                alert('请至少选择一件商品，进行结算');
+                return false;
+            }
+            var goods_id='';
+            check.each(function(index){
+                goods_id += $(this).parents("tr").attr('goods_id')+',';
+            });
+            goods_id = goods_id.substr(0,goods_id.length-1);
+
+            alert(goods_id);
+
+            //console.log(goods_id);
+            //
+           location.href="{{url('pay')}}?goods_id="+goods_id
+
         });
     })
 

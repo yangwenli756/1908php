@@ -91,7 +91,13 @@ Route::prefix('card')->group(function(){
 
 Route::get('/index', 'index\IndexController@index');
 Route::get('/car', 'index\CarController@car');
+Route::get('/pay', 'index\CarController@pay');
+Route::get('/address', 'index\CarController@address');
 Route::get('/addcar', 'index\CarController@addcar');
+Route::post('/getArea', 'index\CarController@getArea');
+Route::post('/address_do', 'index\CarController@address_do');
+Route::get('/address_list', 'index\CarController@address_list');
+Route::get('/success', 'index\CarController@success');
 Route::get('/login', 'index\LoginController@login');
 Route::post('/login_do', 'index\LoginController@login_do');
 Route::get('/register', 'index\RegisterController@register');

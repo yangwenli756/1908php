@@ -30,7 +30,7 @@ class RegisterController extends Controller
 
         //dd($res['u_code']);
 
-        if($res['u_code']==$code['code']){
+        if($res['u_code']!==$code['code']){
             return redirect('/register')->with('msg','验证码不正确');
         }
 
@@ -61,13 +61,8 @@ class RegisterController extends Controller
 
         }else{
             echo "no";
-
-
         }
-
         }
-
-
     public function sendsms($moblie,$code){
 
         AlibabaCloud::accessKeyClient('LTAI4Fg7xPua1MvEazdskggD', 'mlKaootUy5s0qydZK71U6JYmhWVSFJ')

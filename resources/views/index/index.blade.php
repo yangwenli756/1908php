@@ -28,12 +28,12 @@
     </ul><!--reg-login-click/-->
     <div id="sliderA" class="slider">
         @foreach($res as $k=>$v11)
-            <img src="{{env('UPLOAD_URL')}}{{$v11->goods_img}}">
+            <img src="{{env('UPLOAD_URL')}}{{$v11->goods_imgs}}">
             @endforeach
     </div><!--sliderA/-->
     <ul class="pronav">
         @foreach($data as $k=>$v2)
-        <li><a href="{{url('prolist',$v2->brand_id)}}">{{$v2->bname}}</a></li>
+        <li><a href="{{url('prolist',$v2->b_id)}}">{{$v2->bname}}</a></li>
         @endforeach
         <div class="clearfix"></div>
     </ul><!--pronav/-->
@@ -41,7 +41,7 @@
         @foreach($res as $k=>$v)
         <div class="index-pro1-list">
             <dl>
-                <dt><a href="{{url('proinfo',$v->goods_id)}}"><img src="{{env('UPLOAD_URL')}}{{$v->goods_img}}" width="500"></a></dt>
+                <dt><a href="{{url('proinfo',$v->goods_id)}}"><img src="{{env('UPLOAD_URL')}}{{$v->goods_imgs}}" width="500"></a></dt>
                 <dd class="ip-text"><a href="{{url('proinfo')}}">{{$v->goods_name}}</a><span>已售：488</span></dd>
                 <dd class="ip-price"><strong>¥{{$v->goods_price}}</strong> <span>¥19008</span></dd>
 

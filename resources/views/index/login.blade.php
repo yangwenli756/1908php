@@ -10,7 +10,7 @@
     <div class="head-top">
         <img src="/static/index/images/head.jpg" />
     </div><!--head-top/-->
-    <form action="{{url('login_do')}}" method="post" class="reg-login">
+        <form action="{{url('login_do')}}" method="post" class="reg-login">
         @csrf
         <h3>还没有三级分销账号？点此<a class="orange" href="{{url('register')}}">注册</a></h3>
         <div class="lrBox">
